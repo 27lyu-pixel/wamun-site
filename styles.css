@@ -168,3 +168,75 @@ footer a:hover{color:var(--blue);}
 .fine{font-family:'Times New Roman', Times, serif;font-size:11px;color:var(--ink-dim);margin-top:40px;}
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+
+/* ---------- timeline ---------- */
+.timeline{position:relative;margin:0;padding:0 0 0 0;list-style:none;}
+.timeline::before{
+  content:"";position:absolute;left:118px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(180deg,var(--blue-pale),var(--blue-mid),var(--blue-pale));
+}
+@media (max-width:720px){.timeline::before{left:9px;}}
+
+.tl-item{position:relative;display:flex;gap:34px;padding:0 0 40px 0;}
+.tl-item:last-child{padding-bottom:0;}
+
+.tl-when{
+  flex:none;width:100px;text-align:right;padding-top:2px;
+  font-family:'Times New Roman', Times, serif;
+}
+.tl-when .yr{
+  display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);
+}
+.tl-when .dt{display:block;font-size:20px;color:var(--navy);line-height:1.25;}
+
+.tl-node{
+  position:absolute;left:112px;top:6px;width:13px;height:13px;border-radius:50%;
+  background:var(--white);border:2px solid var(--blue);
+}
+.tl-item.done .tl-node{background:var(--blue);}
+.tl-item.major .tl-node{width:17px;height:17px;left:110px;border-width:3px;border-color:var(--blue-deep);}
+
+.tl-body{flex:1;padding-left:34px;}
+.tl-body h3{font-size:21px;margin:0 0 5px;}
+.tl-meta{
+  font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin:0 0 9px;
+}
+.tl-body p{margin:0;color:var(--ink-dim);font-size:16px;max-width:640px;}
+.tl-tag{
+  display:inline-block;margin-top:12px;padding:4px 11px;border:1px solid var(--blue-pale);
+  background:var(--blue-wash);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-deep);
+}
+
+@media (max-width:720px){
+  .tl-item{gap:0;padding-left:34px;flex-direction:column;}
+  .tl-when{width:auto;text-align:left;padding-bottom:6px;}
+  .tl-when .dt{font-size:18px;}
+  .tl-node{left:3px;top:7px;}
+  .tl-item.major .tl-node{left:1px;}
+  .tl-body{padding-left:0;}
+}
+
+/* ---------- floating instagram orb ---------- */
+.ig-orb{
+  position:fixed;right:26px;bottom:26px;z-index:60;
+  width:58px;height:58px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--white);border:1px solid var(--blue-pale);
+  box-shadow:0 6px 20px rgba(11,37,69,.16);
+  perspective:520px;
+  transition:box-shadow .2s,transform .2s;
+}
+.ig-orb:hover{box-shadow:0 10px 28px rgba(11,37,69,.24);transform:translateY(-2px);}
+.ig-orb svg{
+  width:30px;height:30px;color:var(--blue-deep);
+  animation:orb-spin 7s linear infinite;
+  transform-style:preserve-3d;
+}
+.ig-orb:hover svg{animation-duration:2.6s;}
+@keyframes orb-spin{
+  from{transform:rotateY(0deg);}
+  to{transform:rotateY(360deg);}
+}
+.ig-orb .sr{position:absolute;left:-9999px;}
+@media (max-width:720px){.ig-orb{right:16px;bottom:16px;width:52px;height:52px;}.ig-orb svg{width:27px;height:27px;}}
+@media (prefers-reduced-motion:reduce){.ig-orb svg{animation:none;}}

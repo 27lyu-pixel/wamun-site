@@ -9,7 +9,7 @@ Static site, no build step. 7 pages, shared stylesheet, one small JS file.
 | `index.html` | Home |
 | `wamun-xi.html` | Conference: committees, logistics, registration |
 | `resources.html` | Position papers, procedure, resolutions |
-| `calendar.html` | Meeting schedule + upcoming events |
+| `calendar.html` | Timeline of the club year (nav label: Timeline) |
 | `photos.html` | Club photo gallery |
 | `cabinet.html` / `secretariat.html` | Leadership rosters |
 | `styles.css` | All layout, type, and color (Times New Roman throughout, no webfonts) |
@@ -39,6 +39,12 @@ records GitHub specifies at your registrar.
 - **Background motifs** (globe, country polygons, seated delegates, dot grid)
   are SVGs injected by `site.js` and positioned by `motifs.css`. Adjust
   `.motif { opacity }` to make them more or less visible.
+- **Timeline entries** are `<li class="tl-item">` blocks in `calendar.html`.
+  Add `major` for a larger marker on big dates, `done` to fill the marker once
+  an event has passed. Duplicate or delete blocks freely.
+- **The Instagram orb** is the floating link in the bottom-right corner, on
+  every page. It spins on its Y axis continuously and speeds up on hover.
+  Edit the handle in the `.ig-orb` anchor if it ever changes.
 - **Scroll behavior**: elements with class `reveal` fade up when scrolled into
   view; motifs drift at different rates; a red progress rail tracks page
   position. All of it is disabled automatically under
@@ -50,7 +56,7 @@ records GitHub specifies at your registrar.
 |---|---|
 | `wamun-xi.html` | Date, venue, fee, committee topics, background guides, chairs, logistics, registration form |
 | `resources.html` | Position paper template, procedure sheet, resolution archive |
-| `calendar.html` | Meeting day/time/room, real upcoming events |
+| `calendar.html` | Real dates, event names, and locations for each timeline entry |
 | `photos.html` | Real photos for the six placeholder tiles |
 | `cabinet.html` / `secretariat.html` | Names, roles, headshots |
 
