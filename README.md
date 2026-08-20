@@ -1,29 +1,53 @@
 # Woodward Model UN — website
 
-Static site, no build step. 7 pages, one shared stylesheet.
+Static site, no build step. 7 pages, shared stylesheet, one small JS file.
+
+## Files
+
+| File | What it is |
+|---|---|
+| `index.html` | Home |
+| `wamun-xi.html` | Conference: committees, logistics, registration |
+| `resources.html` | Position papers, procedure, resolutions |
+| `calendar.html` | Meeting schedule + upcoming events |
+| `photos.html` | Club photo gallery |
+| `cabinet.html` / `secretariat.html` | Leadership rosters |
+| `styles.css` | All layout, type, and color |
+| `motifs.css` | Background motif positioning + scroll animation styles |
+| `site.js` | Injects background motifs, runs scroll reveals and parallax |
+| `images/` | Logo, headshots, club photos |
 
 ## Deploy to GitHub Pages
 
-1. Push these files to the root of your `wamun-site` repo (`main` branch).
-2. On GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch**, branch `main`, folder `/root`. Save.
-3. GitHub gives you a `https://<owner>.github.io/wamun-site/` URL within a minute or two.
-4. To use your own domain: **Settings → Pages → Custom domain**, enter the domain. GitHub creates a `CNAME` file in the repo automatically. Then add the DNS records your registrar and GitHub's docs specify (an `A` record for an apex domain, or a `CNAME` record for a subdomain like `www`).
+Already configured: **Settings → Pages**, source `main`, folder `/root`.
+Push to `main` and the site rebuilds automatically at
+`https://27lyu-pixel.github.io/wamun-site/`.
+
+For a custom domain: **Settings → Pages → Custom domain**, then add the DNS
+records GitHub specifies at your registrar.
+
+## Design notes
+
+- **Colors** live as CSS variables at the top of `styles.css` (`:root`).
+  Changing those five hex values re-skins every page at once.
+- **Background motifs** (globe, country polygons, seated delegates, dot grid)
+  are SVGs injected by `site.js` and positioned by `motifs.css`. Adjust
+  `.motif { opacity }` to make them more or less visible.
+- **Scroll behavior**: elements with class `reveal` fade up when scrolled into
+  view; motifs drift at different rates; a red progress rail tracks page
+  position. All of it is disabled automatically under
+  `prefers-reduced-motion`.
 
 ## Content still needed
 
-Every card marked **Content to add** in the pages below needs real input before this replaces the Google Site:
-
 | Page | What's missing |
 |---|---|
-| `wamun-xi.html` | Conference date/venue/fee, each committee's topic + background guide + chair, logistics (schedule, drop-off, dress code), registration form embed + deadline |
-| `resources.html` | Position paper template/samples, parliamentary procedure sheet, resolution archive |
-| `newsletter.html` | Links to each newsletter issue, both series |
-| `photos.html` | Real photos in place of the six placeholder tiles |
-| `cabinet.html` | Names, roles, photos for each officer |
-| `secretariat.html` | Names, roles, photos for the WAMUN Secretariat |
+| `images/logo.png` | Club logo — header and footer fall back to text until added |
+| `wamun-xi.html` | Date, venue, fee, committee topics, background guides, chairs, logistics, registration form |
+| `resources.html` | Position paper template, procedure sheet, resolution archive |
+| `calendar.html` | Meeting day/time/room, real upcoming events |
+| `photos.html` | Real photos for the six placeholder tiles |
+| `cabinet.html` / `secretariat.html` | Names, roles, headshots |
 
-Everything else (home page copy, nav, contact emails, Instagram link) is live already.
-
-## Editing without touching layout
-
-Each page is plain HTML — find the text or `<div class="tbd">` block you want to change and edit it directly. No build tools required. `styles.css` controls the look for every page at once; you generally shouldn't need to touch it for a content update.
+Anything marked **Content to add** in a page is a placeholder meant to be
+replaced, not styled around.

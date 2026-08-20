@@ -206,3 +206,46 @@ footer a:hover{color:var(--red);}
 .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
 .photo-grid .ph{aspect-ratio:4/3;background:var(--charcoal-2);border:1px dashed var(--line-strong);display:flex;align-items:center;justify-content:center;color:var(--ink-dim);font-family:'IBM Plex Mono',monospace;font-size:11px;text-align:center;padding:10px;}
 @media (max-width:700px){.photo-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* ---------- logo slot in wordmark ---------- */
+.wordmark{display:inline-flex;align-items:center;gap:10px;}
+.wordmark .mark{height:26px;width:auto;}
+
+/* ---------- calendar ---------- */
+.meeting-block{
+  display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;
+  border:1px solid var(--line-strong);background:var(--charcoal);padding:26px 28px;
+}
+.meeting-when{
+  display:flex;flex-direction:column;gap:4px;
+  border-right:1px solid var(--line);padding-right:28px;min-width:150px;
+}
+.meeting-when .day{font-family:'Newsreader',serif;font-size:24px;color:var(--ink);}
+.meeting-when .time{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--red);text-transform:uppercase;}
+.meeting-what h3{font-size:19px;margin-bottom:6px;}
+.meeting-what p{margin:0;color:var(--ink-dim);font-size:15px;}
+@media (max-width:640px){
+  .meeting-when{border-right:none;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:16px;width:100%;}
+}
+
+.event-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;}
+.event{
+  display:flex;gap:26px;align-items:flex-start;
+  padding:22px 0;border-bottom:1px solid var(--line);
+}
+.event:first-child{border-top:1px solid var(--line);}
+.event-date{
+  flex:none;width:70px;text-align:center;
+  border:1px solid var(--line-strong);padding:10px 0;
+}
+.event-date .mo{
+  display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.1em;color:var(--red);text-transform:uppercase;
+}
+.event-date .dy{display:block;font-family:'Newsreader',serif;font-size:26px;line-height:1.1;color:var(--ink);}
+.event-body h3{font-size:19px;margin-bottom:4px;}
+.event-meta{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--red);margin:0 0 8px;
+}
+.event-body p{margin:0;color:var(--ink-dim);font-size:15px;}

@@ -1,0 +1,49 @@
+/* ---------- ambient background motifs ---------- */
+.bg-layer{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  overflow:hidden;
+}
+.bg-layer svg{position:absolute;}
+.motif{opacity:.055;color:var(--ink);}
+.motif-red{opacity:.07;color:var(--red);}
+
+.motif-globe{top:4vh;right:-9vw;width:min(58vw,720px);}
+.motif-map{bottom:6vh;left:-7vw;width:min(52vw,640px);}
+.motif-delegates{bottom:-2vh;right:4vw;width:min(38vw,460px);}
+.motif-grid{top:38vh;left:32vw;width:min(30vw,340px);}
+
+@media (max-width:780px){
+  .motif-delegates,.motif-grid{display:none;}
+  .motif-globe{width:90vw;right:-30vw;}
+  .motif-map{width:80vw;left:-24vw;}
+}
+
+/* everything above the motifs */
+.site-header,main,footer{position:relative;z-index:1;}
+
+/* ---------- scroll reveal ---------- */
+.reveal{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1);
+}
+.reveal.in{opacity:1;transform:none;}
+.reveal.d1{transition-delay:.08s;}
+.reveal.d2{transition-delay:.16s;}
+.reveal.d3{transition-delay:.24s;}
+
+/* scroll progress rail */
+.progress{
+  position:fixed;top:0;left:0;height:2px;width:0%;
+  background:var(--red);z-index:99;
+  transition:width .1s linear;
+}
+
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none;}
+  .progress{display:none;}
+  .bg-layer svg{transform:none !important;}
+}
