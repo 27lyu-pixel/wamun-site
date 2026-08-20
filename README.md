@@ -12,10 +12,11 @@ Static site, no build step. 7 pages, shared stylesheet, one small JS file.
 | `calendar.html` | Meeting schedule + upcoming events |
 | `photos.html` | Club photo gallery |
 | `cabinet.html` / `secretariat.html` | Leadership rosters |
-| `styles.css` | All layout, type, and color |
+| `styles.css` | All layout, type, and color (Times New Roman throughout, no webfonts) |
 | `motifs.css` | Background motif positioning + scroll animation styles |
 | `site.js` | Injects background motifs, runs scroll reveals and parallax |
-| `images/` | Logo, headshots, club photos |
+| `emblem.svg` | Globe-and-laurel mark (inlined into pages by the build; edit here) |
+| `images/` | Headshots and club photos |
 
 ## Deploy to GitHub Pages
 
@@ -28,8 +29,13 @@ records GitHub specifies at your registrar.
 
 ## Design notes
 
-- **Colors** live as CSS variables at the top of `styles.css` (`:root`).
-  Changing those five hex values re-skins every page at once.
+- **Colors** live as CSS variables at the top of `styles.css` (`:root`) — a
+  UN-blue ramp from `--navy` (#0B2545) through `--blue-deep`, `--blue`,
+  `--blue-un`, `--blue-mid`, `--blue-pale`, to `--blue-wash` (#EDF4FB).
+  Changing those values re-skins every page at once.
+- **The emblem** (globe + laurel wreath) is inline SVG in each page: small in
+  the header/footer wordmark, large and faint as the hero watermark. It's
+  vector, so it stays sharp at any size and takes its color from CSS.
 - **Background motifs** (globe, country polygons, seated delegates, dot grid)
   are SVGs injected by `site.js` and positioned by `motifs.css`. Adjust
   `.motif { opacity }` to make them more or less visible.
@@ -42,7 +48,6 @@ records GitHub specifies at your registrar.
 
 | Page | What's missing |
 |---|---|
-| `images/logo.png` | Club logo — header and footer fall back to text until added |
 | `wamun-xi.html` | Date, venue, fee, committee topics, background guides, chairs, logistics, registration form |
 | `resources.html` | Position paper template, procedure sheet, resolution archive |
 | `calendar.html` | Meeting day/time/room, real upcoming events |
